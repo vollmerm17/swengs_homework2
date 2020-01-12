@@ -1,0 +1,11 @@
+<form [formControl]="captcha">
+    <script src="https://www.google.com/recaptcha/api.js"
+          async defer></script>
+  <re-captcha
+      #captchaRef="reCaptcha"
+      required="true" siteKey="6LezkM4UAAAAAL6T6Nuij3CYSzvwHEne86hb57cJ"
+      (resolved)="resolvedC($event)"
+  ></re-captcha>
+</form>
+
+

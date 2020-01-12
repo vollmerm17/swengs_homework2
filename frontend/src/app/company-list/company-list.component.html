@@ -1,0 +1,28 @@
+<table mat-table [dataSource]="companies">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let company">{{company.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="industry">
+    <th mat-header-cell *matHeaderCellDef>Industry</th>
+    <td mat-cell *matCellDef="let company">{{industryService.industryNames[company.industry]}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="country_name">
+    <th mat-header-cell *matHeaderCellDef>Country</th>
+    <td mat-cell *matCellDef="let company">{{company.country_name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let company">
+      <button mat-button [routerLink]="'/company-form/' + company.id">Edit</button>
+      <button mat-button (click)="deleteCompany(company)" *ngIf="userService.hasPermission('yamod.delete_company')">Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

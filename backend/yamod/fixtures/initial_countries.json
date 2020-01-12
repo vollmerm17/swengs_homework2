@@ -1,0 +1,43 @@
+[
+  {
+    "model": "yamod.country",
+    "pk": 1,
+    "fields": {
+      "name": "Österreich",
+      "city": "Wien"
+    }
+  },
+  {
+    "model": "yamod.country",
+    "pk": 2,
+    "fields": {
+      "name": "Deutschland",
+      "city": "Berlin"
+    }
+  },
+    {
+    "model": "yamod.country",
+    "pk": 3,
+    "fields": {
+      "name": "Deutschland",
+      "city": "München"
+    }
+    },
+      {
+    "model": "yamod.country",
+    "pk": 4,
+    "fields": {
+      "name": "Ghana",
+      "city": "Accra"
+    }
+    },
+        {
+    "model": "yamod.country",
+    "pk": 5,
+    "fields": {
+      "name": "Nigeria",
+      "city": "Lagos"
+    }
+    }
+
+]

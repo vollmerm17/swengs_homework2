@@ -1,0 +1,34 @@
+[
+  {
+    "model": "yamod.client",
+    "pk": 1,
+    "fields": {
+      "first_name": "Cinder",
+      "last_name": "Ella"
+    }
+  },
+  {
+    "model": "yamod.client",
+    "pk": 2,
+    "fields": {
+      "first_name": "Santa",
+      "last_name": "Claus"
+    }
+  },
+  {
+    "model": "yamod.client",
+    "pk": 3,
+    "fields": {
+      "first_name": "Shrek",
+      "last_name": "Ugly"
+    }
+  },
+  {
+    "model": "yamod.client",
+    "pk": 4,
+    "fields": {
+      "first_name": "Arnold",
+      "last_name": "Pickel"
+    }
+  }
+]

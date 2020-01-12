@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <button [matMenuTriggerFor]="companyMenu"
+          mat-button>Company & Countries
+  </button>
+  <mat-menu #companyMenu="matMenu">
+    <button mat-menu-item routerLink="company-list">List Companies</button>
+    <button mat-menu-item routerLink="company-form">Create Company</button>
+    <button mat-menu-item routerLink="country-list">List Countries</button>
+    <button mat-menu-item routerLink="country-form">Create Country</button>
+  </mat-menu>
+  <app-logout *ngIf="isLoggedIn"></app-logout>
+</mat-toolbar>
+<router-outlet></router-outlet>

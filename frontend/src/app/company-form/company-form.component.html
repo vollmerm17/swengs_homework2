@@ -1,0 +1,64 @@
+<form [formGroup]="companyFormGroup" class="company-form">
+  <mat-form-field>
+    <input formControlName="name" matInput placeholder="Name" required type="text">
+    <mat-hint align="end">The name of the company</mat-hint>
+    <mat-error *ngIf="companyFormGroup.controls.name.hasError('required')">Name is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="industry" placeholder="Industry" [required]="true">
+      <mat-option [value]="null">Unknown</mat-option>
+      <mat-option *ngFor="let industry of industryService.industryNames | keyvalue"
+                  [value]="industry.key">{{industry.value}} </mat-option>
+    </mat-select>
+    <mat-hint align="end">The industry of the company</mat-hint>
+    <mat-error *ngIf="companyFormGroup.controls.industry.hasError('required')">Industry is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input formControlName="telephone_number" matInput placeholder="Telephonenumber" required="true">
+    <mat-hint align="end">The telephone number of the company</mat-hint>
+    <mat-error *ngIf="companyFormGroup.controls.telephone_number.hasError('invalid')">Please provide a valid telephone
+      number eg. +4917631580064
+    </mat-error>
+    <mat-error *ngIf="companyFormGroup.controls.telephone_number.hasError(' telephoneAlreadyExists')">This telephone
+      number already exists
+    </mat-error>
+    <mat-error *ngIf="companyFormGroup.controls.telephone_number.hasError('required')">Telephone number is required
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <app-date [required]="true" formControlName="founding_date" hint="The founding date of the company"
+            placeholder="Founding date"></app-date>
+  <div *ngIf="age !== undefined">Age: {{age}}</div>
+  <mat-form-field>
+    <mat-select formControlName="country"
+                placeholder="Country" [required]="true">
+      <mat-option [value]="null">Unknown</mat-option>
+      <mat-option *ngFor="let
+countryOption of countryOptions"
+                  [value]="countryOption.id">{{countryOption.name + ', ' + countryOption.city}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The country of the HQ from the company</mat-hint>
+    <mat-error *ngIf="companyFormGroup.controls.country.hasError('required')">Country is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="customers"
+                multiple placeholder="Customers">
+      <mat-option *ngFor="let
+customerOption of customerOptions"
+                  [value]="customerOption.id">{{customerOption.first_name + ' ' + customerOption.last_name}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The customer in this company</mat-hint>
+  </mat-form-field>
+  <br/>
+  <app-captcha [required]="true" data-callback="recaptchaCallback"></app-captcha>
+  <br>
+  <mat-card-actions align="center">
+    <button id=submit (click)="createCompany()" [disabled]="!recaptchaCallback || !companyFormGroup.valid"
+            color="primary"
+            mat-raised-button>
+      <span *ngIf="!companyFormGroup.controls.id.value">Create</span>
+      <span *ngIf="companyFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+</form>
+
